@@ -32,14 +32,16 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurarCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userLabel = new System.Windows.Forms.Label();
+            this.proxyLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(67, 92);
+            this.button1.Location = new System.Drawing.Point(48, 133);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 71);
+            this.button1.Size = new System.Drawing.Size(175, 35);
             this.button1.TabIndex = 0;
             this.button1.Text = "ENTRAR";
             this.button1.UseVisualStyleBackColor = true;
@@ -70,17 +72,39 @@
             this.configurarCuentaToolStripMenuItem.Text = "Configurar cuenta";
             this.configurarCuentaToolStripMenuItem.Click += new System.EventHandler(this.configurarCuentaToolStripMenuItem_Click);
             // 
-            // Form1
+            // userLabel
+            // 
+            this.userLabel.AutoSize = true;
+            this.userLabel.Location = new System.Drawing.Point(45, 72);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(35, 13);
+            this.userLabel.TabIndex = 2;
+            this.userLabel.Text = "label1";
+            // 
+            // proxyLabel
+            // 
+            this.proxyLabel.AutoSize = true;
+            this.proxyLabel.Location = new System.Drawing.Point(45, 97);
+            this.proxyLabel.Name = "proxyLabel";
+            this.proxyLabel.Size = new System.Drawing.Size(35, 13);
+            this.proxyLabel.TabIndex = 3;
+            this.proxyLabel.Text = "label1";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.proxyLabel);
+            this.Controls.Add(this.userLabel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(300, 300);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(300, 300);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Nauta";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -95,6 +119,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configurarCuentaToolStripMenuItem;
+        private System.Windows.Forms.Label userLabel;
+        private System.Windows.Forms.Label proxyLabel;
     }
 }
 

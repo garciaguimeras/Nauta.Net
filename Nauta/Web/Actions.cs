@@ -50,6 +50,12 @@ namespace Nauta.Web
             return parser.ParseLoginResponse(response);
         }
 
+        public async Task<string> GetAvailableTime(string timeParams)
+        {
+            var response = await Connection.Get("https://secure.etecsa.net:8443/EtecsaQueryServlet", this.proxy, timeParams);
+            return response != null && response.Count() > 0 ? response[0] : null;
+        }
+
         public async Task<bool> Logout(string formContent)
         {
             var response = await Connection.Get("https://secure.etecsa.net:8443/LogoutServlet", this.proxy, formContent);
