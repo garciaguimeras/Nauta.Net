@@ -12,30 +12,34 @@ using System.Windows.Forms;
 
 namespace Nauta
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
-
-            ConfigFile.Write(new ConfigData { UserName = "prueba", Password = "prueba", ProxyServer = "", ProxyPort = "" });
         }
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            var actions = new Actions("", "", "", "");
+            var data = ConfigFile.Read();
+            var actions = new Actions(data.UserName, data.Password, data.ProxyServer, data.ProxyPort);
+
             var dict = await actions.HomePage();
-            var result = await actions.Login(dict);
-            
+            var result = await actions.Login(dict);   
             if (result == null)
             {
                 return;
             }
+
+            SessionForm form = new SessionForm();
+            form.LoginResponse = result;
+            form.ShowDialog();
         }
 
         private void configurarCuentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ConfigForm form = new ConfigForm();
+            form.ShowDialog();
         }
     }
 }

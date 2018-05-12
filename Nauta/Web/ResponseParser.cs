@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 namespace Nauta.Web
 {
 
-    class LoginResponse
+    public class LoginResponse
     {
         public string Session { get; set; }
         public string Time { get; set; }

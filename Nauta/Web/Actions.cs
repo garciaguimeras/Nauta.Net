@@ -50,11 +50,11 @@ namespace Nauta.Web
             return parser.ParseLoginResponse(response);
         }
 
-        public async void Logout(string formContent)
+        public async Task<bool> Logout(string formContent)
         {
             var response = await Connection.Get("https://secure.etecsa.net:8443/LogoutServlet", this.proxy, formContent);
             var parser = new ResponseParser();
-            parser.ParseLogoutResponse(response);
+            return parser.ParseLogoutResponse(response);
         }
 
     }
