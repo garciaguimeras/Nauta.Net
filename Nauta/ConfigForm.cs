@@ -36,5 +36,6 @@ namespace Nauta
             ConfigFile.Write(data);
             Close();
         }
+
     }
 }

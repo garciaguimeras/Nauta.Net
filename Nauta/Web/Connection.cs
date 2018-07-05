@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Nauta.Web
 {
@@ -18,26 +19,29 @@ namespace Nauta.Web
         {
             try
             {
-                HttpClientHandler handler = null;
+                HttpClient client = new HttpClient();
                 if (!string.IsNullOrEmpty(proxy))
                 {
-                    handler = new HttpClientHandler()
+                    var handler = new HttpClientHandler()
                     {
                         Proxy = new WebProxy(proxy),
                         UseProxy = true,
                     };
+                    client = new HttpClient(handler);
                 }
-                string result = "";
-                HttpClient client = new HttpClient(handler);
 
+                string result = "";
+               
                 url = url + "?" + formContent;
                 var response = await client.GetAsync(url);
                 result = await response.Content.ReadAsStringAsync();
 
                 return result.Split('\n');
             }
-            catch (Exception)
-            { }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
             return new string[] { };
         }
@@ -46,17 +50,18 @@ namespace Nauta.Web
         {
             try
             {
-                HttpClientHandler handler = null;
+                HttpClient client = new HttpClient();
                 if (!string.IsNullOrEmpty(proxy))
                 {
-                    handler = new HttpClientHandler()
+                    var handler = new HttpClientHandler()
                     {
                         Proxy = new WebProxy(proxy),
                         UseProxy = true,
                     };
+                    client = new HttpClient(handler);
                 }
+
                 string result = "";
-                HttpClient client = new HttpClient(handler);
 
                 List<KeyValuePair<string, string>> form = new List<KeyValuePair<string, string>>();
                 foreach (string key in formContent.Keys)
@@ -65,13 +70,15 @@ namespace Nauta.Web
                 }
 
                 var content = new FormUrlEncodedContent(form);
-                var response = await client.PostAsync(new Uri(url), content);
+                var response = await client.PostAsync(url, content);
                 result = await response.Content.ReadAsStringAsync();
 
                 return result.Split('\n');
             }
-            catch (Exception)
-            { }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
             return new string[] { };
         }

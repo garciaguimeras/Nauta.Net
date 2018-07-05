@@ -22,12 +22,18 @@ namespace Nauta
         {
             InitializeComponent();
 
+            ReadConfigFileAndInitWidgets();
+        }
+
+        private void ReadConfigFileAndInitWidgets()
+        {
             data = ConfigFile.Read();
             userLabel.Text = data.UserName;
             if (string.IsNullOrEmpty(data.ProxyServer))
                 proxyLabel.Text = "No hay proxy definido";
             else
                 proxyLabel.Text = "Proxy: http://" + data.ProxyServer + ":" + data.ProxyPort;
+
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -56,6 +62,7 @@ namespace Nauta
         {
             ConfigForm form = new ConfigForm();
             form.ShowDialog();
+            ReadConfigFileAndInitWidgets();
         }
     }
 }

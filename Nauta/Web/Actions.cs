@@ -16,12 +16,16 @@ namespace Nauta.Web
         {
             this.username = username;
             this.password = password;
-            this.proxy = "http://" + proxyServer + ":" + proxyPort;
+            this.proxy = "";
+            if (!string.IsNullOrEmpty(proxyServer) && !string.IsNullOrEmpty(proxyPort))
+            {
+                this.proxy = "http://" + proxyServer + ":" + proxyPort;
+            }
         }
 
         public async Task<Dictionary<string, string>> HomePage()
         {
-            var response = await Connection.Get("https://secure.etecsa.net:8443", this.proxy, "");
+            var response = await Connection.Get(@"https://secure.etecsa.net:8443", this.proxy, "");
 
             var parser = new ResponseParser();
             var dict = parser.ParseHomeResponse(response);
@@ -44,7 +48,7 @@ namespace Nauta.Web
 
         public async Task<LoginResponse> Login(Dictionary<string, string> form)
         {
-            var response = await Connection.Post("https://secure.etecsa.net:8443/LoginServlet", this.proxy, form);
+            var response = await Connection.Post(@"https://secure.etecsa.net:8443/LoginServlet", this.proxy, form);
 
             var parser = new ResponseParser();
             return parser.ParseLoginResponse(response);
@@ -52,13 +56,13 @@ namespace Nauta.Web
 
         public async Task<string> GetAvailableTime(string timeParams)
         {
-            var response = await Connection.Get("https://secure.etecsa.net:8443/EtecsaQueryServlet", this.proxy, timeParams);
+            var response = await Connection.Get(@"https://secure.etecsa.net:8443/EtecsaQueryServlet", this.proxy, timeParams);
             return response != null && response.Count() > 0 ? response[0] : null;
         }
 
         public async Task<bool> Logout(string formContent)
         {
-            var response = await Connection.Get("https://secure.etecsa.net:8443/LogoutServlet", this.proxy, formContent);
+            var response = await Connection.Get(@"https://secure.etecsa.net:8443/LogoutServlet", this.proxy, formContent);
             var parser = new ResponseParser();
             return parser.ParseLogoutResponse(response);
         }
