@@ -13,6 +13,7 @@ namespace Nauta.Web
         public string Session { get; set; }
         public string TimeParams { get; set; }
         public bool AlreadyConnected { get; set; }
+        public bool NoMoney { get; set; }
     }
 
     class ResponseParser
@@ -51,11 +52,13 @@ namespace Nauta.Web
         {
             string pattern1 = "var urlParam = \"([A-Za-z0-9=_&]*)\"";
             string pattern2 = "alert\\(\"El usuario ya está conectado.\"\\);";
-            string pattern3 = "g_httpRequest.open\\(\"post\", \"/EtecsaQueryServlet\\?([A-Za-z0-9=_&@.]*)\", true\\);";
+            string pattern3 = "alert\\(\"Su tarjeta no tiene saldo disponible";
+            string pattern4 = "g_httpRequest.open\\(\"post\", \"/EtecsaQueryServlet\\?([A-Za-z0-9=_&@.]*)\", true\\);";
 
             string session = null;
             string timeParams = "";
             bool alreadyConnected = false;
+            bool noMoney = false;
 
             foreach (string resp in response)
             {
@@ -78,19 +81,27 @@ namespace Nauta.Web
                 match = Regex.Match(line, pattern3, RegexOptions.IgnoreCase);
                 if (match.Success)
                 {
+                    Console.WriteLine("{0}", match.Groups[0]);
+                    noMoney = true;
+                }
+
+                match = Regex.Match(line, pattern4, RegexOptions.IgnoreCase);
+                if (match.Success)
+                {
                     Console.WriteLine("{0}", match.Groups[1]);
                     timeParams = match.Groups[1].ToString();
                 }
             }
 
-            if (session == null && !alreadyConnected)
+            if (session == null && !alreadyConnected && !noMoney)
                 return null;
 
             return new LoginResponse
             {
                 Session = session,
                 TimeParams = timeParams,
-                AlreadyConnected = alreadyConnected
+                AlreadyConnected = alreadyConnected,
+                NoMoney = noMoney
             };
         }
 

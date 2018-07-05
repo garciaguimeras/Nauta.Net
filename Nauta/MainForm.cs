@@ -53,6 +53,11 @@ namespace Nauta
                 MessageBox.Show("Ya existe un usuario conectado previamente. Puedes navegar sin necesidad de entrar con esta cuenta.");
                 return;
             }
+            if (result.NoMoney)
+            {
+                MessageBox.Show("No tienes saldo. Necesitas recargar tu cuenta.");
+                return;
+            }
 
             SessionForm form = new SessionForm(result);
             form.ShowDialog();
