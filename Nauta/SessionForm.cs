@@ -18,6 +18,7 @@ namespace Nauta
         private LoginResponse request;
         private ConfigData data;
         private Actions actions;
+        private long time = 0;
 
         public SessionForm(LoginResponse request)
         {
@@ -51,5 +52,19 @@ namespace Nauta
             Close();
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            time++;
+
+            long minutes = time / 60;
+            long seconds = time % 60;
+
+            long hours = minutes / 60;
+            minutes = minutes % 60;
+
+            var result = string.Format("{0}:{1:00}:{2:00}", hours, minutes, seconds);
+
+            timeLabel.Text = "Tiempo transcurrido: " + result;
+        }
     }
 }

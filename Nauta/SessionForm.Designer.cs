@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.availTimeLabel = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(72, 150);
+            this.button1.Location = new System.Drawing.Point(75, 125);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(146, 46);
             this.button1.TabIndex = 0;
@@ -45,17 +48,33 @@
             // availTimeLabel
             // 
             this.availTimeLabel.AutoSize = true;
-            this.availTimeLabel.Location = new System.Drawing.Point(72, 56);
+            this.availTimeLabel.Location = new System.Drawing.Point(72, 72);
             this.availTimeLabel.Name = "availTimeLabel";
             this.availTimeLabel.Size = new System.Drawing.Size(35, 13);
             this.availTimeLabel.TabIndex = 1;
-            this.availTimeLabel.Text = "label1";
+            this.availTimeLabel.Text = "label2";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timeLabel
+            // 
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Location = new System.Drawing.Point(72, 42);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(35, 13);
+            this.timeLabel.TabIndex = 2;
+            this.timeLabel.Text = "label1";
             // 
             // SessionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.availTimeLabel);
             this.Controls.Add(this.button1);
             this.MaximizeBox = false;
@@ -73,6 +92,8 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label availTimeLabel;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label timeLabel;
     }
 }
 
