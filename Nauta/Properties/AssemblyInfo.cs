@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Nauta")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Nauta.Net")]
+[assembly: AssemblyDescription("Este software es distribuido de forma gratuita y libre, tanto en su formato ejecutable como su código fuente, bajo los términos de la Licencia Pública de GNU (GPL) v3")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Nauta")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCompany("#blackcat.dev")]
+[assembly: AssemblyProduct("Nauta.Net")]
+[assembly: AssemblyCopyright("Copyright © 2018. Noel <garcia.guimeras@gmail.com>")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

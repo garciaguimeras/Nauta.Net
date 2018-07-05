@@ -34,6 +34,7 @@
             this.configurarCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userLabel = new System.Windows.Forms.Label();
             this.proxyLabel = new System.Windows.Forms.Label();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +61,8 @@
             // opcionesToolStripMenuItem
             // 
             this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.configurarCuentaToolStripMenuItem});
+            this.configurarCuentaToolStripMenuItem,
+            this.acercaDeToolStripMenuItem});
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.opcionesToolStripMenuItem.Text = "Opciones";
@@ -89,6 +91,13 @@
             this.proxyLabel.Size = new System.Drawing.Size(35, 13);
             this.proxyLabel.TabIndex = 3;
             this.proxyLabel.Text = "label1";
+            // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de...";
+            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -121,6 +130,7 @@
         private System.Windows.Forms.ToolStripMenuItem configurarCuentaToolStripMenuItem;
         private System.Windows.Forms.Label userLabel;
         private System.Windows.Forms.Label proxyLabel;
+        private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
     }
 }
 

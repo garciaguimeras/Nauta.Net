@@ -69,5 +69,11 @@ namespace Nauta
             form.ShowDialog();
             ReadConfigFileAndInitWidgets();
         }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox form = new AboutBox();
+            form.ShowDialog();
+        }
     }
 }
