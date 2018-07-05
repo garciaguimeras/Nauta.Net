@@ -18,7 +18,7 @@ Aplicación .NET para loguearse y desloguearse de la red Nauta.
 ## Estado del proyecto
 
 * Permite operaciones de login y logout de la red Nauta
-* Informa del tiempo consumido
+* Informa del tiempo disponible
 * Informa si existe otro usuario logueado al Nauta desde su red
 * Informa si su cuenta se quedó sin saldo
 
