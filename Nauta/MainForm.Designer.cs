@@ -32,14 +32,16 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurarCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userLabel = new System.Windows.Forms.Label();
             this.proxyLabel = new System.Windows.Forms.Label();
-            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
+            this.button1.AccessibleDescription = "Permite entrar a la cuenta Nauta";
+            this.button1.AccessibleName = "Botón de entrar";
             this.button1.Location = new System.Drawing.Point(48, 133);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(175, 35);
@@ -74,6 +76,13 @@
             this.configurarCuentaToolStripMenuItem.Text = "Configurar cuenta";
             this.configurarCuentaToolStripMenuItem.Click += new System.EventHandler(this.configurarCuentaToolStripMenuItem_Click);
             // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de...";
+            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
+            // 
             // userLabel
             // 
             this.userLabel.AutoSize = true;
@@ -91,13 +100,6 @@
             this.proxyLabel.Size = new System.Drawing.Size(35, 13);
             this.proxyLabel.TabIndex = 3;
             this.proxyLabel.Text = "label1";
-            // 
-            // acercaDeToolStripMenuItem
-            // 
-            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.acercaDeToolStripMenuItem.Text = "Acerca de...";
-            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
             // MainForm
             // 
