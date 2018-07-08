@@ -44,7 +44,7 @@ namespace Nauta
             var result = await actions.Login(dict);   
             if (result == null)
             {
-                MessageBox.Show("No se pudo conectar. Revise su conexión, y la configuración de su usuario y contraseña.");
+                MessageBox.Show("No se pudo conectar. Revise su conexión.");
                 return;
             }
 
@@ -56,6 +56,16 @@ namespace Nauta
             if (result.NoMoney)
             {
                 MessageBox.Show("No tienes saldo. Necesitas recargar tu cuenta.");
+                return;
+            }
+            if (result.BadPassword)
+            {
+                MessageBox.Show("Contraseña incorrecta. Revisa la opción de Configurar cuenta.");
+                return;
+            }
+            if (result.BadUsername)
+            {
+                MessageBox.Show("Nombre de usuario incorrecto. Revisa la opción de Configurar cuenta.");
                 return;
             }
 
