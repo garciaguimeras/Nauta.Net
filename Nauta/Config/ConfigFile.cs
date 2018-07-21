@@ -26,7 +26,7 @@ namespace Nauta.Config
         {
             if (!File.Exists(FILENAME))
             {
-                Write(new ConfigData());
+                Write(new ConfigData { UserName = "", Password = "", ProxyServer = "", ProxyPort = "" });
             }
 
             XDocument xDoc = XDocument.Load(FILENAME);
