@@ -40,7 +40,7 @@ namespace Nauta.Web
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                // MessageBox.Show(e.Message);
             }
 
             return new string[] { };
@@ -77,7 +77,7 @@ namespace Nauta.Web
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                // MessageBox.Show(e.Message);
             }
 
             return new string[] { };
