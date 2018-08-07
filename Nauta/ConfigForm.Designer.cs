@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigForm));
             this.textBoxUser = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxProxy = new System.Windows.Forms.TextBox();
@@ -43,14 +44,14 @@
             // 
             this.textBoxUser.Location = new System.Drawing.Point(79, 29);
             this.textBoxUser.Name = "textBoxUser";
-            this.textBoxUser.Size = new System.Drawing.Size(193, 20);
+            this.textBoxUser.Size = new System.Drawing.Size(180, 20);
             this.textBoxUser.TabIndex = 0;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(79, 59);
+            this.textBoxPassword.Location = new System.Drawing.Point(79, 55);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(193, 20);
+            this.textBoxPassword.Size = new System.Drawing.Size(180, 20);
             this.textBoxPassword.TabIndex = 1;
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
@@ -58,14 +59,14 @@
             // 
             this.textBoxProxy.Location = new System.Drawing.Point(79, 89);
             this.textBoxProxy.Name = "textBoxProxy";
-            this.textBoxProxy.Size = new System.Drawing.Size(193, 20);
+            this.textBoxProxy.Size = new System.Drawing.Size(180, 20);
             this.textBoxProxy.TabIndex = 2;
             // 
             // textBoxPort
             // 
             this.textBoxPort.Location = new System.Drawing.Point(79, 115);
             this.textBoxPort.Name = "textBoxPort";
-            this.textBoxPort.Size = new System.Drawing.Size(193, 20);
+            this.textBoxPort.Size = new System.Drawing.Size(180, 20);
             this.textBoxPort.TabIndex = 3;
             // 
             // label1
@@ -80,7 +81,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 62);
+            this.label2.Location = new System.Drawing.Point(12, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 5;
@@ -89,7 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 96);
+            this.label3.Location = new System.Drawing.Point(40, 92);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 6;
@@ -98,7 +99,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 115);
+            this.label4.Location = new System.Drawing.Point(35, 118);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 7;
@@ -106,7 +107,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(107, 156);
+            this.button1.Location = new System.Drawing.Point(126, 162);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -128,6 +129,7 @@
             this.Controls.Add(this.textBoxProxy);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUser);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(300, 300);
             this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "ConfigForm";

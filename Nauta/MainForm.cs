@@ -28,7 +28,13 @@ namespace Nauta
         private void ReadConfigFileAndInitWidgets()
         {
             data = ConfigFile.Read();
-            userLabel.Text = data.UserName;
+
+            if (string.IsNullOrEmpty(data.UserName))
+                userLabel.Text = "No hay usuario definido";
+            else
+                userLabel.Text = data.UserName;
+
+
             if (string.IsNullOrEmpty(data.ProxyServer))
                 proxyLabel.Text = "No hay proxy definido";
             else
