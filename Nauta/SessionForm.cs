@@ -42,7 +42,12 @@ namespace Nauta
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            button1.Enabled = false;
+
             var result = await actions.Logout(request.Session);
+
+            button1.Enabled = true;
+
             if (!result)
             {
                 MessageBox.Show("No se pudo salir de la sesión. Inténtelo de nuevo, o apague su equipo.");

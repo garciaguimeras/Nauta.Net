@@ -46,8 +46,13 @@ namespace Nauta
         {
             var actions = new Actions(data.UserName, data.Password, data.ProxyServer, data.ProxyPort);
 
+            button1.Enabled = false;
+
             var dict = await actions.HomePage();
-            var result = await actions.Login(dict);   
+            var result = await actions.Login(dict);
+
+            button1.Enabled = true;
+             
             if (result == null)
             {
                 MessageBox.Show("No se pudo conectar. Revise su conexión.");
