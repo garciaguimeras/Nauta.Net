@@ -67,6 +67,7 @@
             // 
             // logoPictureBox
             // 
+            this.logoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
             this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
