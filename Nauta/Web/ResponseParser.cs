@@ -10,12 +10,34 @@ namespace Nauta.Web
 
     public class LoginResponse
     {
-        public string Session { get; set; }
-        public string TimeParams { get; set; }
+        public string session { get; set; }
+        public string loggerId { get; set; }
+        public string ssid { get; set; }
+        public string domain { get; set; }
+        public string username { get; set; }
+        public string wlanacname { get; set; }
+        public string wlanmac { get; set; }
+        public string wlanuserip { get; set; }
+
+
         public bool AlreadyConnected { get; set; }
         public bool NoMoney { get; set; }
         public bool BadUsername { get; set; }
         public bool BadPassword { get; set; }
+
+        public string GetParamString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            if (session != null) stringBuilder.Append(session);
+            if (loggerId != null) stringBuilder.Append(loggerId);
+            if (ssid != null) stringBuilder.Append(ssid);
+            if (domain != null) stringBuilder.Append(domain);
+            if (username != null) stringBuilder.Append(username);
+            if (wlanuserip != null) stringBuilder.Append(wlanuserip);
+            if (wlanmac != null) stringBuilder.Append(wlanmac);
+            if (wlanacname != null) stringBuilder.Append(wlanacname);
+            return stringBuilder.ToString();
+        }
     }
 
     class ResponseParser
@@ -52,15 +74,29 @@ namespace Nauta.Web
 
         public LoginResponse ParseLoginResponse(string[] response)
         {
-            string pattern1 = "var urlParam = \"([A-Za-z0-9=_&]*)\"";
-            string pattern2 = "g_httpRequest.open\\(\"post\", \"/EtecsaQueryServlet\\?([A-Za-z0-9=_&@.]*)\", true\\);";
             string pattern3 = "alert\\(\"Su tarjeta no tiene saldo disponible";
             string pattern4 = "alert\\(\"El usuario ya está conectado.\"\\);";
             string pattern5 = "alert\\(\"Entre el nombre de usuario y contraseña correctos";
             string pattern6 = "alert\\(\"No se pudo autorizar al usuario";
 
+            string pattern10 = "var urlParam = \"([A-Za-z0-9=_&]*)\"";
+            string pattern11 = "\\+ \"(&loggerId=[0-9]*\\+[A-Za-z0-9._@]*)\"";
+            string pattern12 = "\\+ \"(&ssid=[A-Za-z0-9._@]*)\"";
+            string pattern13 = "\\+ \"(&domain=[A-Za-z0-9._@]*)\"";
+            string pattern14 = "\\+ \"(&username=[A-Za-z0-9._@]*)\"";
+            string pattern15 = "\\+ \"(&wlanacname=[A-Za-z0-9._@]*)\"";
+            string pattern16 = "\\+ \"(&wlanmac=[A-Za-z0-9._@]*)\"";
+            string pattern17 = "\\+ \"(&wlanuserip=[A-Za-z0-9._@]*)\"";
+
             string session = null;
-            string timeParams = "";
+            string loggerId = null;
+            string ssid = null;
+            string domain = null;
+            string username = null;
+            string wlanacname = null;
+            string wlanmac = null;
+            string wlanuserip = null;
+
             bool alreadyConnected = false;
             bool noMoney = false;
             bool badPassword = false;
@@ -71,20 +107,63 @@ namespace Nauta.Web
                 var line = resp.Trim();
                 Console.WriteLine(line);
 
-                var match = Regex.Match(line, pattern1, RegexOptions.IgnoreCase);
-                if (match.Success)
+                var match = Regex.Match(line, pattern10, RegexOptions.IgnoreCase);
+                if (session == null && match.Success)
                 {
                     Console.WriteLine("{0}", match.Groups[1]);
                     session = match.Groups[1].ToString();
                 }
 
-                match = Regex.Match(line, pattern2, RegexOptions.IgnoreCase);
-                if (match.Success)
+                match = Regex.Match(line, pattern11, RegexOptions.IgnoreCase);
+                if (loggerId == null && match.Success)
                 {
                     Console.WriteLine("{0}", match.Groups[1]);
-                    timeParams = match.Groups[1].ToString();
+                    loggerId = match.Groups[1].ToString();
                 }
 
+                match = Regex.Match(line, pattern12, RegexOptions.IgnoreCase);
+                if (ssid == null && match.Success)
+                {
+                    Console.WriteLine("{0}", match.Groups[1]);
+                    ssid = match.Groups[1].ToString();
+                }
+
+                match = Regex.Match(line, pattern13, RegexOptions.IgnoreCase);
+                if (domain == null && match.Success)
+                {
+                    Console.WriteLine("{0}", match.Groups[1]);
+                    domain = match.Groups[1].ToString();
+                }
+
+                match = Regex.Match(line, pattern14, RegexOptions.IgnoreCase);
+                if (username == null && match.Success)
+                {
+                    Console.WriteLine("{0}", match.Groups[1]);
+                    username = match.Groups[1].ToString();
+                }
+
+                match = Regex.Match(line, pattern15, RegexOptions.IgnoreCase);
+                if (wlanacname == null && match.Success)
+                {
+                    Console.WriteLine("{0}", match.Groups[1]);
+                    wlanacname = match.Groups[1].ToString();
+                }
+
+                match = Regex.Match(line, pattern16, RegexOptions.IgnoreCase);
+                if (wlanmac == null && match.Success)
+                {
+                    Console.WriteLine("{0}", match.Groups[1]);
+                    wlanmac = match.Groups[1].ToString();
+                }
+
+                match = Regex.Match(line, pattern17, RegexOptions.IgnoreCase);
+                if (wlanuserip == null && match.Success)
+                {
+                    Console.WriteLine("{0}", match.Groups[1]);
+                    wlanuserip = match.Groups[1].ToString();
+                }
+
+                // Boolean checks
                 match = Regex.Match(line, pattern3, RegexOptions.IgnoreCase);
                 if (match.Success)
                 {
@@ -114,13 +193,20 @@ namespace Nauta.Web
                 }
             }
 
-            if (session == null && !alreadyConnected && !noMoney && !badPassword && !badUsername)
+            if (session == null && loggerId == null && !alreadyConnected && !noMoney && !badPassword && !badUsername)
                 return null;
 
             return new LoginResponse
             {
-                Session = session,
-                TimeParams = timeParams,
+                session = session,
+                loggerId = loggerId,
+                ssid = ssid,
+                domain = domain,
+                username = username,
+                wlanuserip = wlanuserip,
+                wlanmac = wlanmac,
+                wlanacname = wlanacname,
+
                 AlreadyConnected = alreadyConnected,
                 NoMoney = noMoney,
                 BadPassword = badPassword,

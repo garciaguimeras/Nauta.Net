@@ -46,6 +46,21 @@ namespace Nauta.Web
             return new string[] { };
         }
 
+        public static async Task<string[]> Post(string url, string proxy, string urlEncoded)
+        {
+            var dict = new Dictionary<string, string>();
+            var parameters = urlEncoded.Split('&');
+            foreach (string p in parameters)
+            {
+                var kv = p.Split('=');
+                if (kv.Count() == 2)
+                {
+                    dict.Add(kv[0], kv[1]);
+                }
+            }
+            return await Post(url, proxy, dict);
+        }
+
         public static async Task<string[]> Post(string url, string proxy, Dictionary<string, string> formContent)
         {
             try
@@ -61,17 +76,15 @@ namespace Nauta.Web
                     client = new HttpClient(handler);
                 }
 
-                string result = "";
-
                 List<KeyValuePair<string, string>> form = new List<KeyValuePair<string, string>>();
                 foreach (string key in formContent.Keys)
                 {
                     form.Add(new KeyValuePair<string, string>(key, formContent[key]));
                 }
-
                 var content = new FormUrlEncodedContent(form);
+
                 var response = await client.PostAsync(url, content);
-                result = await response.Content.ReadAsStringAsync();
+                var result = await response.Content.ReadAsStringAsync();
 
                 return result.Split('\n');
             }

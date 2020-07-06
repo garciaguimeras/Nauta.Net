@@ -33,7 +33,7 @@ namespace Nauta
 
         private async void GetAvailableTime()
         {
-            var result = await actions.GetAvailableTime(request.TimeParams);
+            var result = await actions.GetAvailableTime(request.GetParamString());
             if (result != null)
             {
                 availTimeLabel.Text = "Tiempo disponible: " + result;
@@ -44,7 +44,7 @@ namespace Nauta
         {
             button1.Enabled = false;
 
-            var result = await actions.Logout(request.Session);
+            var result = await actions.Logout(request.GetParamString());
 
             button1.Enabled = true;
 
